@@ -1,0 +1,103 @@
+<html>  
+<head>  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x"></script>  
+  <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>  
+<body>  
+  <div id="app">  
+     
+   
+
+ 
+
+    <div class="row"  >
+      <div class="col-sm-10">
+        
+        <h2>Conversion Peso</h2>
+        <br>
+        <div class="form-control">
+          <label>Gramo: </label>
+          <input type="number" v-model="Peso" v-on:change="changePeso" />
+          
+          <label>  To: </label>
+          
+          <select   v-model="conversionP" v-on:change="changePeso">
+            <option value="1000000" >Tonelada</option>
+            <option value="100000" >Kilogramo</option>
+            <option value="100" selected>Centímetro</option>
+            <option value="1000">Miligramo</option>
+            
+          </select>
+          
+          <input type="number" v-model="ConversionPe"   />
+        </div>
+        
+        
+        
+        
+        
+      </div>
+    </div> 
+ 
+    
+  </div>  
+
+ 
+
+  <script> 
+ 
+
+    var app = new Vue({   
+      el: '#app',
+      
+      data: {  
+        Distancia: 0 ,
+        conversionD: 0 ,
+        ConversionDis: 0,
+        Temperatura: 0,
+        conversionT: 0,
+        ConversionTem: 0,
+        Peso: 0,
+        conversionP: 0,
+        ConversionPe: 0
+
+      },  
+      methods: {  
+        changeDistancia: function () {  
+
+          if(this.conversionD >= 100000)
+          {
+            this.ConversionDis = this.Distancia / this.conversionD;
+          }else{
+            this.ConversionDis = this.Distancia * this.conversionD;
+          }
+           
+        },
+        changeTemperatura: function () {  
+
+          if(this.conversionT == 1)
+            {
+              this.ConversionTem = (this.Temperatura * 9.5) + 32;
+            }else{
+              this.ConversionTem = (this.Temperatura + 273.15);
+            }
+ 
+          },
+          changePeso: function () {  
+
+            if(this.conversionP >= 100000)
+          {
+            this.ConversionPe = this.Peso / this.conversionP;
+          }else{
+            this.ConversionPe = this.Peso * this.conversionP;
+          }
+          }
+
+      }  
+    });  
+  </script>  
+</body>  
+</html>
